@@ -27,4 +27,5 @@ RUN pip install awscli
 
 RUN git clone https://github.com/torch/distro.git ~/torch --recursive && \
     cd ~/torch && bash install-deps && \
-    ./install.sh
+    ./install.sh -b && \
+    apt-get -q clean -y && rm -rf /var/lib/apt/lists/* && rm -f /var/cache/apt/*.bin
