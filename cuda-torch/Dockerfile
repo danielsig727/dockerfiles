@@ -31,14 +31,14 @@ RUN add-apt-repository ppa:jonathonf/ffmpeg-3 && \
 	apt-get -y install ffmpeg libav-tools x264 x265 && \
 	apt-get -q clean -y && rm -rf /var/lib/apt/lists/* && rm -f /var/cache/apt/*.bin
 
-RUN pip install https://s3.amazonaws.com/pytorch/whl/cu80/torch-0.1.10.post2-cp27-none-linux_x86_64.whl && \
-    pip install torchvision && \
-    rm -rf /tmp/*
-
 # RUN pip install awscli
 
 RUN git clone https://github.com/torch/distro.git ~/torch --recursive && \
     cd ~/torch && bash install-deps && \
     ./install.sh -b && \
     apt-get -q clean -y && rm -rf /var/lib/apt/lists/* && rm -f /var/cache/apt/*.bin && \
+    rm -rf /tmp/*
+
+RUN pip install https://s3.amazonaws.com/pytorch/whl/cu80/torch-0.1.10.post2-cp27-none-linux_x86_64.whl && \
+    pip install torchvision && \
     rm -rf /tmp/*
