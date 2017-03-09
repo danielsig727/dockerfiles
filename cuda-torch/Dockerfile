@@ -15,7 +15,6 @@ RUN apt-get -y update && \
 	apt-get -q clean -y && rm -rf /var/lib/apt/lists/* && rm -f /var/cache/apt/*.bin
 	
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1 && \
-	ln -s /usr/bin/python /usr/bin/python2 && \
 	cd /tmp && wget https://bootstrap.pypa.io/get-pip.py && python /tmp/get-pip.py
 
 RUN add-apt-repository ppa:jonathonf/ffmpeg-3 && \
