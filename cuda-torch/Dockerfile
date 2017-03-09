@@ -4,10 +4,6 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
-RUN git clone https://github.com/torch/distro.git ~/torch --recursive && \
-    cd ~/torch && bash install-deps && \
-    ./install.sh
-
 #############
 # Customization
 
@@ -27,3 +23,7 @@ RUN add-apt-repository ppa:jonathonf/ffmpeg-3 && \
 	apt-get -q clean -y && rm -rf /var/lib/apt/lists/* && rm -f /var/cache/apt/*.bin
 
 RUN pip install awscli
+
+RUN git clone https://github.com/torch/distro.git ~/torch --recursive && \
+    cd ~/torch && bash install-deps && \
+    ./install.sh
