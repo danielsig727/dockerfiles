@@ -9,7 +9,8 @@ ENV LC_ALL en_US.UTF-8
 
 RUN apt-get -y update && \
 	apt-get -y install python2.7 python2.7-dev \
-		build-essential git virtualenv wget\
+		build-essential git virtualenv wget \
+        software-properties-common python-software-properties \
 		libffi-dev libssl-dev libxml2-dev libxslt1-dev libjpeg8-dev && \
 	apt-get -q clean -y && rm -rf /var/lib/apt/lists/* && rm -f /var/cache/apt/*.bin
 	
